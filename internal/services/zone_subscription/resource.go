@@ -122,7 +122,7 @@ func (r *ZoneSubscriptionResource) Update(ctx context.Context, req resource.Upda
 	_, err = r.client.Zones.Subscriptions.Update(
 		ctx,
 		zones.SubscriptionUpdateParams{
-			ZoneID: cloudflare.F(data.ID.ValueString()),
+			ZoneID: cloudflare.F(data.ZoneID.ValueString()),
 		},
 		option.WithRequestBody("application/json", dataBytes),
 		option.WithResponseBodyInto(&res),
@@ -157,7 +157,7 @@ func (r *ZoneSubscriptionResource) Read(ctx context.Context, req resource.ReadRe
 	_, err := r.client.Zones.Subscriptions.Get(
 		ctx,
 		zones.SubscriptionGetParams{
-			ZoneID: cloudflare.F(data.ID.ValueString()),
+			ZoneID: cloudflare.F(data.ZoneID.ValueString()),
 		},
 		option.WithResponseBodyInto(&res),
 		option.WithMiddleware(logging.Middleware(ctx)),
